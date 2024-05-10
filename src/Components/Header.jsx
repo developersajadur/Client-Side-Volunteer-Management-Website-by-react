@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-// import "../../style.css";
+import "../style.css";
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import { CiSearch } from "react-icons/ci";
@@ -50,7 +50,7 @@ const Header = () => {
         </div>
 
       </div>
-      <ul id="navLg" tabIndex={0} className=" mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+      <ul tabIndex={0} className=" mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
       <li><a className="font-bold"> {user?.displayName || user?.email || "User Name Not Found"}</a></li>
         <li>
           <NavLink to="/profile" className="justify-between">

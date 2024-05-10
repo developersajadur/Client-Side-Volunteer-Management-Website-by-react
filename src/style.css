@@ -1,0 +1,66 @@
+
+  
+  
+  #navLg li a.active{
+    border: 1px solid #E7A500;
+    background-color: transparent;
+    color: #E7A500;
+   }
+   #navLg li a:active{
+    border: 1px solid #E7A500;
+    background-color: transparent;
+    color: #E7A500;
+   }
+   #nav li a.active{
+     border: 1px solid #E7A500;
+     background-color: transparent;
+     color: #E7A500;
+   }
+   #nav li a:active{
+     border: 1px solid #E7A500;
+     background-color: transparent;
+     color: #E7A500;
+   }
+   /* ---------------- slider style ------------------- */
+   .swiper {
+     width: 100%;
+     margin-left: auto;
+     margin-right: auto;
+   }
+   
+   .swiper-slide {
+     text-align: center;
+     font-size: 18px;
+     background: #fff;
+   
+     /* Center slide text vertically */
+     display: flex;
+     justify-content: center;
+     align-items: center;
+   }
+   
+   .swiper-slide img {
+     display: block;
+     width: 100%;
+     object-fit: cover;
+   }
+ 
+   /* ------------- room card style ---------------- */
+ 
+   .shadow-style{
+     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+   }
+ 
+ 
+   .book-flex{
+     display: grid;
+     grid-template-columns: auto auto ;
+   }
+   .navbar{
+     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);;
+   }
+   
+   .review-card{
+     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+   }
+ 
