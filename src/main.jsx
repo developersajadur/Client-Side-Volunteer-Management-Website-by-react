@@ -10,6 +10,8 @@ import Home from './Components/Home';
 import Register from './Components/Forms/Register';
 import AuthProvider from './Providers/AuthProvider';
 import Login from './Components/Forms/Login';
+import NeedVolunteer from './Components/NeedVolunteer/NeedVolunteer';
+import VolunteerDetails from './Components/NeedVolunteer/VolunteerDetails';
 
 
 
@@ -29,6 +31,16 @@ const router = createBrowserRouter([
       {
         path:"/login",
         element:<Login></Login>
+      },
+      {
+        path:"/Need-Volunteer",
+        element:<NeedVolunteer></NeedVolunteer>,
+        loader:() => fetch("http://localhost:5000/volunteers-post")
+      },
+      {
+        path:"/volunteer-details/:id",
+        element:<VolunteerDetails></VolunteerDetails>,
+        loader:({params}) => fetch(`http://localhost:5000/volunteer-details/${params.id}`)
       }
     ]
   },

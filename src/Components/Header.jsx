@@ -15,7 +15,7 @@ const Header = () => {
 
     const navLinks = <>
     <li><NavLink to="/">Home</NavLink></li>
-    <li><NavLink to="/spots">Spots</NavLink></li>
+    <li><NavLink to="/Need-Volunteer">Need Volunteer</NavLink></li>
     <li><NavLink to="/countrys">Countrys</NavLink></li>
     <li><NavLink to="/blogs">Blog</NavLink></li>
     <li><NavLink to="/contact">Contact</NavLink></li>

@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
-    <div className="mt-10 mb-20">
+    <div className="mb-20 -translate-y-5">
       <div className="">
         <Swiper
           cssMode={true}
