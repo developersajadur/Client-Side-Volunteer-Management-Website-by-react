@@ -57,9 +57,9 @@ const Header = () => {
             <span className="badge">New</span>
             </NavLink>
         </li>
-        <li><NavLink to="/my-spots">My Spots</NavLink></li>
-        <li><NavLink to="/add-spots">Add Spots</NavLink></li>
-        <li><NavLink to="/add-country">Add Country</NavLink></li>
+        <li><NavLink to="/job-post">Post A Job</NavLink></li>
+        {/* <li><NavLink to="/add-spots">Add Spots</NavLink></li>
+        <li><NavLink to="/add-country">Add Country</NavLink></li> */}
         <li><button onClick={handleLogOut}>Log Out</button></li>
       </ul>
     </div>

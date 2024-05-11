@@ -14,6 +14,7 @@ import NeedVolunteer from './Components/NeedVolunteer/NeedVolunteer';
 import VolunteerDetails from './Components/NeedVolunteer/VolunteerDetails';
 import Contact from './Components/Contact/Contact';
 import Blogs from './Components/Blog/Blogs';
+import VolunteerPost from './Components/Forms/PostForm/VolunteerPost';
 
 
 
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
         path:"/volunteer-details/:id",
         element:<VolunteerDetails></VolunteerDetails>,
         loader:({params}) => fetch(`http://localhost:5000/volunteer-details/${params.id}`)
+      },
+      {
+        path:"/job-post",
+        element:<VolunteerPost></VolunteerPost>
       }
     ]
   },
