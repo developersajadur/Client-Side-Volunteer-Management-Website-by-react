@@ -1,12 +1,23 @@
+import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const VolunteerDetails = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const volunteer = useLoaderData();
 
   const onSubmit = (data) => {
-    console.log(data);
+    axios.post("http://localhost:5000/request-job", data)
+      .then(res => {
+        if(res.data.insertedId){
+          Swal.fire({
+            icon: "success",
+            title: "Applying successfully",
+            text: "If You Are Qualified, we will notify you"
+          });
+        }
+      })
   };
 
   return (
@@ -49,19 +60,21 @@ const VolunteerDetails = () => {
         {/* -------------------------------------------------------------------------------------- */}
 
         <div className="w-full lg:w-[30%]">
-          <h2 className="text-xl font-bold">Fast! Available {volunteer?.volunteersNeeded} Vacancy Now</h2>
-          <h2 className="text-xl font-bold">You Can Apply Until {volunteer?.deadline}</h2>
-          <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5 mt-10">
-            <input {...register("name", { required: true })} name="name" type="text" placeholder="Your Name" className="input input-bordered w-full" />
+          <div className="w-full flex justify-between items-center">
+            <h2 className="text-xl font-bold"> Vacancy: {volunteer?.volunteersNeeded}</h2>
+            <h2 className="text-xl font-bold">Deadline: {volunteer?.deadline}</h2>
+          </div>
+          <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5 mt-10 lg:mt-28">
+            <input {...register("name", { required: true })} defaultValue={volunteer?.organizerName} name="name" type="text" placeholder="Your Name" className="input input-bordered input-warning w-full" />
             {errors.name && <span className="text-sm text-red-500 font-medium -mt-4">Please enter your name</span>}
 
-            <input {...register("email", { required: true })} name="email" type="email" placeholder="Your Email" className="input input-bordered w-full" />
+            <input {...register("email", { required: true })} defaultValue={volunteer?.organizerEmail} name="email" type="email" placeholder="Your Email" className="input input-bordered w-full" />
             {errors.email && <span className="text-sm text-red-500 font-medium -mt-4">Please enter your email</span>}
 
-            <input {...register("number", { required: true })} name="number" type="number" placeholder="Your Phone Number" className="input input-bordered w-full" />
+            <input {...register("number", { required: true })} name="number" type="number" placeholder="Your Phone Number" className="input input-bordered input-warning w-full" />
             {errors.number && <span className="text-sm text-red-500 font-medium -mt-4">Please enter your phone number</span>}
 
-            <textarea {...register("message", { required: true })} name="message" placeholder="Discribe Your Self" className="textarea textarea-bordered w-full h-40"></textarea>
+            <textarea {...register("message", { required: true })} name="message" placeholder="Discribe Your Self" className="textarea textarea-bordered textarea-warning w-full h-40"></textarea>
             {errors.message && <span className="text-sm text-red-500 font-medium -mt-4">Please enter your message</span>}
 
             <button type="submit" className="btn w-full bg-[#FFA415] text-white text-xl">Apply Now</button>

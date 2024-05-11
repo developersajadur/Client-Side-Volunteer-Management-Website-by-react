@@ -72,9 +72,9 @@ const Login = () => {
                         Login your Account
                     </h1>
                     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5 mt-10">
-                        <input {...register("email", { required: true })} name="email" type="email" placeholder="Your Email" className="input input-bordered w-full" />
+                        <input {...register("email", { required: true })} name="email" type="email" placeholder="Your Email" className="input input-bordered input-warning w-full" />
                         {errors.email && <span className="text-sm text-red-500 font-medium -mt-4">Please enter your email</span>}
-                        <label className="input input-bordered flex items-center gap-2">
+                        <label className="input input-bordered input-warning flex items-center gap-2">
                             <input  {...register("password", { required: true })} name="password" type={showPassword ? "text" : "password"} placeholder="Your Password" className="grow" />
                             <span onClick={() => setShowPassword(!showPassword)} className="cursor-pointer" aria-label="Toggle password visibility">
                                 {showPassword ?  <FaRegEyeSlash  className=" text-2xl" /> : <FaRegEye className=" text-2xl" />}

@@ -12,6 +12,8 @@ import AuthProvider from './Providers/AuthProvider';
 import Login from './Components/Forms/Login';
 import NeedVolunteer from './Components/NeedVolunteer/NeedVolunteer';
 import VolunteerDetails from './Components/NeedVolunteer/VolunteerDetails';
+import Contact from './Components/Contact/Contact';
+import Blogs from './Components/Blog/Blogs';
 
 
 
@@ -23,6 +25,14 @@ const router = createBrowserRouter([
       {
         path:"/",
         element: <Home></Home>
+      },
+      {
+        path:"/contact",
+        element:<Contact></Contact>
+      },
+      { 
+        path:"/blogs",
+        element:<Blogs></Blogs>
       },
       {
         path:"/register",
