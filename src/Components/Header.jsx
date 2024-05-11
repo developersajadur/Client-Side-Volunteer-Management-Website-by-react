@@ -31,7 +31,7 @@ const Header = () => {
        {navLinks}
       </ul>
     </div>
-    <Link to="/"><img className="w-full h-20 " src="logo.png" alt="hotel" /></Link>
+    <Link to="/"><img className="w-full h-20 " src="/logo.png" alt="hotel" /></Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul id="navLg" className="menu menu-horizontal nav px-1 text-xl font-semibold flex gap-5">
