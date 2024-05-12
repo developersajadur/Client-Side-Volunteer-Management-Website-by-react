@@ -15,6 +15,9 @@ import VolunteerDetails from './Components/NeedVolunteer/VolunteerDetails';
 import Contact from './Components/Contact/Contact';
 import Blogs from './Components/Blog/Blogs';
 import VolunteerPost from './Components/Forms/PostForm/VolunteerPost';
+import PrivateRoute from './Components/PrivateRoutes/PrivateRoute';
+import MyJobPost from './Components/MyJobPost/MyJobPost';
+import MyJobApply from './Components/MyJobApply/MyJobApply';
 
 
 
@@ -50,12 +53,19 @@ const router = createBrowserRouter([
       },
       {
         path:"/volunteer-details/:id",
-        element:<VolunteerDetails></VolunteerDetails>,
+        element:<PrivateRoute><VolunteerDetails></VolunteerDetails></PrivateRoute>,
         loader:({params}) => fetch(`http://localhost:5000/volunteer-details/${params.id}`)
       },
       {
         path:"/job-post",
-        element:<VolunteerPost></VolunteerPost>
+        element:<PrivateRoute><VolunteerPost></VolunteerPost></PrivateRoute>
+      },
+      {
+        path:"/my-job-post",
+        element:<PrivateRoute><MyJobPost></MyJobPost></PrivateRoute>
+      },{
+        path:"/my-job-apply",
+        element:<PrivateRoute><MyJobApply></MyJobApply></PrivateRoute>
       }
     ]
   },

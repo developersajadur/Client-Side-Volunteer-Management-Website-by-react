@@ -13,10 +13,12 @@ const VolunteerPost = () => {
     const month = date.getMonth() + 1;
       const year = date.getFullYear();
       const deadline = `${day}/${month}/${year}`
+      const email = user.email;
+      const name = email.displayName;
 
     const { register, handleSubmit } = useForm();
     const onSubmit = (newPost) => {
-        const dataToSend = { ...newPost,user,deadline };
+        const dataToSend = { ...newPost,email,name,deadline };
         axios.post("http://localhost:5000/Volunteers-post", dataToSend)
         .then(res =>{
             if(res.data.insertedId){

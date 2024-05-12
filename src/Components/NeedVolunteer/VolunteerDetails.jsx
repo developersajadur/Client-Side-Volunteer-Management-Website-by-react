@@ -1,9 +1,12 @@
 import axios from "axios";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const VolunteerDetails = () => {
+  const {user} = useContext(AuthContext)
   const { register, handleSubmit, formState: { errors } } = useForm();
   const volunteer = useLoaderData();
 
@@ -65,10 +68,10 @@ const VolunteerDetails = () => {
             <h2 className="text-xl font-bold">Deadline: {volunteer?.deadline}</h2>
           </div>
           <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5 mt-10 lg:mt-28">
-            <input {...register("name", { required: true })} defaultValue={volunteer?.organizerName} name="name" type="text" placeholder="Your Name" className="input input-bordered input-warning w-full" />
+            <input {...register("name", { required: true })} defaultValue={user?.displayName} name="name" type="text" placeholder="Your Name" className="input input-bordered input-warning w-full" />
             {errors.name && <span className="text-sm text-red-500 font-medium -mt-4">Please enter your name</span>}
 
-            <input {...register("email", { required: true })} defaultValue={volunteer?.organizerEmail} name="email" type="email" placeholder="Your Email" className="input input-bordered w-full" />
+            <input {...register("email", { required: true })} defaultValue={user?.email} name="email" type="email" placeholder="Your Email" className="input input-bordered w-full" />
             {errors.email && <span className="text-sm text-red-500 font-medium -mt-4">Please enter your email</span>}
 
             <input {...register("number", { required: true })} name="number" type="number" placeholder="Your Phone Number" className="input input-bordered input-warning w-full" />
