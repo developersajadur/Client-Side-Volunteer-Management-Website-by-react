@@ -9,9 +9,11 @@ const VolunteerDetails = () => {
   const {user} = useContext(AuthContext)
   const { register, handleSubmit, formState: { errors } } = useForm();
   const volunteer = useLoaderData();
-
+const postAdminEmail = volunteer?.email;
   const onSubmit = (data) => {
-    axios.post("http://localhost:5000/request-job", data)
+    const dataToSend = {...data,postAdminEmail}
+    axios.post("http://localhost:5000/request-job")
+    axios.post("http://localhost:5000/my-request-job", dataToSend)
       .then(res => {
         if(res.data.insertedId){
           Swal.fire({
@@ -49,8 +51,8 @@ const VolunteerDetails = () => {
               </div>
             </div>
             <div className="flex flex-col">
-              <h2 className="text-3xl font-bold">{volunteer?.organizerName}</h2>
-              <p className="text-xl font-medium">{volunteer?.organizerEmail}</p>
+              <h2 className="text-3xl font-bold">{volunteer?.name || "Name Not Found"}</h2>
+              <p className="text-xl font-medium">{ volunteer?.email || user?.email || "Email Not Found"}</p>
             </div>
           </div>
           <img src={volunteer?.thumbnail} alt="thumbnail" />

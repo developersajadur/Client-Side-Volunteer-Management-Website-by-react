@@ -14,7 +14,7 @@ const VolunteerPost = () => {
       const year = date.getFullYear();
       const deadline = `${day}/${month}/${year}`
       const email = user.email;
-      const name = email.displayName;
+      const name = user.displayName;
 
     const { register, handleSubmit } = useForm();
     const onSubmit = (newPost) => {

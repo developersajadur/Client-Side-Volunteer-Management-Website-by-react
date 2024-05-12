@@ -58,6 +58,7 @@ const Header = () => {
             </NavLink>
         </li>
         <li><NavLink to="/job-post">Post A Job</NavLink></li>
+        <li><NavLink to="/job-request">Job Request</NavLink></li>
         <li><NavLink to="/my-job-post">My Posted Job</NavLink></li>
         <li><NavLink to="/my-job-apply">My Applied Job</NavLink></li>
         {/* <li><NavLink to="/add-spots">Add Spots</NavLink></li>

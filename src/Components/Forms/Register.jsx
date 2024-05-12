@@ -6,7 +6,7 @@ import { Link, Navigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const Register = () => {
-    const { createUser, googleLogin, twitterLogin } = useContext(AuthContext);
+    const { createUser,updateUserProfile, googleLogin, twitterLogin } = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
     const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -35,10 +35,15 @@ const Register = () => {
         // create user
         createUser(data.email, data.password )
             .then((result) => {
-                toast.success('Registration successful');
-                if (result.user) {
-                    Navigate(location?.state || "/");
-                }
+           // update user
+           updateUserProfile( data.image , data.name)
+           .then ( () => {
+            toast.success('Login successful');
+            if (result.user) {
+                Navigate(location?.state || "/");
+            }
+
+        })
             })
             .catch(error => {
                 toast.error(error.message);

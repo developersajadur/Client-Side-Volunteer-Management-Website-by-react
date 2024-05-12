@@ -3,7 +3,7 @@ import ReactDatePicker from "react-datepicker";
 import { useForm } from "react-hook-form";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
-import { toast } from 'react-toastify'; 
+import toast from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
 

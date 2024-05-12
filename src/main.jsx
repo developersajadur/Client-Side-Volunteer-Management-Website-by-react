@@ -19,6 +19,9 @@ import PrivateRoute from './Components/PrivateRoutes/PrivateRoute';
 import MyJobPost from './Components/MyJobPost/MyJobPost';
 import MyJobApply from './Components/MyJobApply/MyJobApply';
 import UpdatePost from './Components/Forms/PostForm/UpdatePost';
+import { Toaster } from 'react-hot-toast';
+import Profile from './Components/Profile/Profile';
+import JobRequest from './Components/JobRequest/JobRequest';
 
 
 
@@ -30,6 +33,10 @@ const router = createBrowserRouter([
       {
         path:"/",
         element: <Home></Home>
+      },
+      {
+        path:"/profile",
+        element:<PrivateRoute><Profile></Profile></PrivateRoute>
       },
       {
         path:"/contact",
@@ -70,8 +77,12 @@ const router = createBrowserRouter([
       },
       {
         path:"/update-job/:id",
-        element:<UpdatePost></UpdatePost>,
+        element:<PrivateRoute><UpdatePost></UpdatePost>,</PrivateRoute>,
         loader:({params}) => fetch(`http://localhost:5000/volunteers-post/${params.id}`)
+      },
+      {
+        path:"/job-request",
+        element:<PrivateRoute><JobRequest></JobRequest></PrivateRoute>
       }
     ]
   },
@@ -80,6 +91,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
+      <Toaster></Toaster>
     <RouterProvider router={router} />
     </AuthProvider>
   </React.StrictMode>,

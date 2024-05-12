@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
-// import {  NavLink } from "react-router-dom";
-// import { BiBlock } from "react-icons/bi";
-// import { FaCheck } from "react-icons/fa";
-const MyJobApply = () => {
+import {  NavLink } from "react-router-dom";
+import { BiBlock } from "react-icons/bi";
+import { FaCheck } from "react-icons/fa";
+const JobRequest = () => {
     const { user } = useContext(AuthContext);
     const email = user?.email;
     const [myApplyPosts, setMyApplyPosts] = useState([]);
@@ -30,7 +30,7 @@ const MyJobApply = () => {
                 />
                 <div className="absolute flex flex-col rounded-lg h-full items-center justify-center left-0 top-0 gap-8 bg-gradient-to-r pl-16 lg:pl-28 from-[#151515] to-[rgba(21, 21, 21, 0)]">
                     <h1 className="text-3xl lg:text-6xl text-white font-bold">
-                       My Applied Jobs
+                      Job Requests
                     </h1>
                 </div>
             </div>
@@ -45,7 +45,7 @@ const MyJobApply = () => {
                             <th>Email</th>
                             <th>Number</th>
                             <th>Status</th>
-                            {/* <th>Action</th> */}
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -57,10 +57,10 @@ const MyJobApply = () => {
                                 <td>{myApplyPost.number}</td>
                                 <td>{myApplyPost.deadline}</td>
                                 <td>
-                                    {/* <div className="flex gap-5">
+                                    <div className="flex gap-5">
                                         <NavLink to={`/update-job/${myApplyPost._id}`} className="p-4 rounded-xl text-xl text-white bg-[#ffa938]"> <FaCheck /></NavLink>
                                         <button onClick={() => handleDelete(myApplyPost._id)} className="p-4 rounded-xl text-xl text-white bg-[#82561b]"><BiBlock /></button>
-                                    </div> */}
+                                    </div>
                                 </td>
                             </tr>
                         ))}
@@ -72,4 +72,4 @@ const MyJobApply = () => {
     );
 };
 
-export default MyJobApply;
+export default JobRequest;

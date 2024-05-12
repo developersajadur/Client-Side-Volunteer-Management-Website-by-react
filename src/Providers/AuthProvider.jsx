@@ -116,7 +116,7 @@ const AuthProvider = ({ children }) => {
   const contextValue = { user, createUser, updateUserProfile, signInUser, logOutUser, googleLogin, twitterLogin, loading };
 
   return (
-    <AuthContext.Provider value={contextValue}>
+    <AuthContext.Provider value={contextValue}> 
       {children}
       <Toaster
         position="top-center"
