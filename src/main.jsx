@@ -18,6 +18,7 @@ import VolunteerPost from './Components/Forms/PostForm/VolunteerPost';
 import PrivateRoute from './Components/PrivateRoutes/PrivateRoute';
 import MyJobPost from './Components/MyJobPost/MyJobPost';
 import MyJobApply from './Components/MyJobApply/MyJobApply';
+import UpdatePost from './Components/Forms/PostForm/UpdatePost';
 
 
 
@@ -47,7 +48,7 @@ const router = createBrowserRouter([
         element:<Login></Login>
       },
       {
-        path:"/Need-Volunteer",
+        path:"/need-volunteer",
         element:<NeedVolunteer></NeedVolunteer>,
         loader:() => fetch("http://localhost:5000/volunteers-post")
       },
@@ -66,6 +67,11 @@ const router = createBrowserRouter([
       },{
         path:"/my-job-apply",
         element:<PrivateRoute><MyJobApply></MyJobApply></PrivateRoute>
+      },
+      {
+        path:"/update-job/:id",
+        element:<UpdatePost></UpdatePost>,
+        loader:({params}) => fetch(`http://localhost:5000/volunteers-post/${params.id}`)
       }
     ]
   },

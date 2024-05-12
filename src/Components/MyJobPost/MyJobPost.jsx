@@ -11,18 +11,16 @@ const MyJobPost = () => {
     const { user } = useContext(AuthContext);
     const email = user?.email;
     const [myJobPosts, setMyJobPosts] = useState([]);
-    console.log(myJobPosts);
 
     useEffect(() => {
         if (email) {
-            axios.get(`http://localhost:5000/Volunteers-post/${email}`)
+            axios.get(`http://localhost:5000/volunteers-post/user/${email}`)
                 .then(res => setMyJobPosts(res?.data))
+                .catch(err => console.error("Error fetching job posts:", err));
         }
     }, [email]);
 
-    // ----------------- delete----------------
     const handleDelete = (id) => {
-        console.log(id);
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -33,7 +31,7 @@ const MyJobPost = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:5000/Volunteers-post/${id}`)
+                axios.delete(`http://localhost:5000/volunteers-post/${id}`)
                     .then(res => res.data)
                     .then(data => {
                         if (data.deletedCount > 0) {
@@ -56,24 +54,22 @@ const MyJobPost = () => {
             }
         });
     };
-    
 
     return (
         <div>
-               <div className="carousel-item relative my-10 lg:h-96 rounded-lg w-full flex flex-col justify-center items-center">
-        <img
-          src="/public/page-top-img.jpg"
-          className="w-full rounded-lg lg:h-96"
-          alt="carousel"
-        />
-        <div className="absolute flex flex-col rounded-lg h-full items-center justify-center left-0 top-0 gap-8 bg-gradient-to-r pl-16 lg:pl-28 from-[#151515] to-[rgba(21, 21, 21, 0)]">
-          <h1 className="text-3xl lg:text-6xl text-white font-bold">
-          Your Posted Jobs
-          </h1>
-        </div>
-      </div>
-{/* ------------------------------------------------------------------------ */}
-<div className="overflow-x-auto">
+            <div className="carousel-item relative my-10 lg:h-96 rounded-lg w-full flex flex-col justify-center items-center">
+                <img
+                    src="/public/page-top-img.jpg"
+                    className="w-full rounded-lg lg:h-96"
+                    alt="carousel"
+                />
+                <div className="absolute flex flex-col rounded-lg h-full items-center justify-center left-0 top-0 gap-8 bg-gradient-to-r pl-16 lg:pl-28 from-[#151515] to-[rgba(21, 21, 21, 0)]">
+                    <h1 className="text-3xl lg:text-6xl text-white font-bold">
+                        Your Posted Jobs
+                    </h1>
+                </div>
+            </div>
+            <div className="overflow-x-auto">
                 <table className="table">
                     <thead>
                         <tr>
@@ -95,8 +91,8 @@ const MyJobPost = () => {
                                 <td>{myJobPost.deadline}</td>
                                 <td>
                                     <div className="flex gap-5">
-                                        <Link to={`/spot-details/${myJobPost._id}`} className="p-4 rounded-xl text-xl text-white bg-[#a4855d]"><FiEye /></Link>
-                                        <NavLink to={`/update-spots/${myJobPost._id}`} className="p-4 rounded-xl text-xl text-white bg-[#ffa938]"> <FaPen /></NavLink>
+                                        <Link to={`/volunteer-details/${myJobPost._id}`} className="p-4 rounded-xl text-xl text-white bg-[#a4855d]"><FiEye /></Link>
+                                        <NavLink to={`/update-job/${myJobPost._id}`} className="p-4 rounded-xl text-xl text-white bg-[#ffa938]"> <FaPen /></NavLink>
                                         <button onClick={() => handleDelete(myJobPost._id)} className="p-4 rounded-xl text-xl text-white bg-[#82561b]"><MdDelete /></button>
                                     </div>
                                 </td>
@@ -105,7 +101,6 @@ const MyJobPost = () => {
                     </tbody>
                 </table>
             </div>
-
         </div>
     );
 };
