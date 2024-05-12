@@ -10,9 +10,10 @@ const VolunteerDetails = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const volunteer = useLoaderData();
 const postAdminEmail = volunteer?.email;
+const status = "Pending";
   const onSubmit = (data) => {
-    const dataToSend = {...data,postAdminEmail}
-    axios.post("http://localhost:5000/request-job")
+    const dataToSend = {...data,postAdminEmail,status}
+    axios.post("http://localhost:5000/request-job", dataToSend)
     axios.post("http://localhost:5000/my-request-job", dataToSend)
       .then(res => {
         if(res.data.insertedId){

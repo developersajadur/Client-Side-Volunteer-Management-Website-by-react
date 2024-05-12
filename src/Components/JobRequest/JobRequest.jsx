@@ -4,21 +4,34 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import {  NavLink } from "react-router-dom";
 import { BiBlock } from "react-icons/bi";
 import { FaCheck } from "react-icons/fa";
+import toast from "react-hot-toast";
 const JobRequest = () => {
     const { user } = useContext(AuthContext);
     const email = user?.email;
-    const [myApplyPosts, setMyApplyPosts] = useState([]);
-    console.log(myApplyPosts);
+    const [jobRequests, setJobRequests] = useState([]);
+    console.log(jobRequests);
 
     useEffect(() => {
         if (email) {
             axios.get(`http://localhost:5000/request-job/${email}`)
-                .then(res => setMyApplyPosts(res?.data))
+                .then(res => setJobRequests(res?.data))
         }
     }, [email]);
-
-    const handleDelete = (id) => {
-        console.log(id);
+// -------------handleChangeStatus--------------
+const handleChangeStatus = (id, previousStatus , status) => {
+    if(status === previousStatus) {
+        toast.error("Already updated");
+        return;
+    }
+    axios.patch(`http://localhost:5000/job/${id}`, { status })
+        .then(res => {
+            if (res.data.modifiedCount > 0) {
+                toast.success("Job Status updated successfully");
+            }
+        })
+}
+    const handleReject = (id) => {
+        handleChangeStatus(id, "pending", "Rejected");
     }
     return (
         <div>
@@ -49,17 +62,17 @@ const JobRequest = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {myApplyPosts.map((myApplyPost, index) => (
-                            <tr key={myApplyPost._id} className="hover font-bold">
+                        {jobRequests.map((jobRequest, index) => (
+                            <tr key={jobRequest._id} className="hover font-bold">
                                 <th>{index + 1}</th>
-                                <th>{myApplyPost.name}</th>
-                                <th>{myApplyPost.email}</th>
-                                <td>{myApplyPost.number}</td>
-                                <td>{myApplyPost.deadline}</td>
+                                <th>{jobRequest.name}</th>
+                                <th>{jobRequest.email}</th>
+                                <td>{jobRequest.number}</td>
+                                <td>{jobRequest.status}</td>
                                 <td>
                                     <div className="flex gap-5">
-                                        <NavLink to={`/update-job/${myApplyPost._id}`} className="p-4 rounded-xl text-xl text-white bg-[#ffa938]"> <FaCheck /></NavLink>
-                                        <button onClick={() => handleDelete(myApplyPost._id)} className="p-4 rounded-xl text-xl text-white bg-[#82561b]"><BiBlock /></button>
+                                        <button onClick={() => handleChangeStatus(jobRequest._id, jobRequest.status, "In Progress")} className="p-4 rounded-xl text-xl text-white bg-[#ffa938]"> <FaCheck /></button>
+                                        <button onClick={() => handleReject(jobRequest._id, jobRequest.status, "Rejected")} className="p-4 rounded-xl text-xl text-white bg-[#82561b]"><BiBlock /></button>
                                     </div>
                                 </td>
                             </tr>

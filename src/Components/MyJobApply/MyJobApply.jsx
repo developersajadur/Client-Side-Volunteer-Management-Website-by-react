@@ -8,18 +8,14 @@ const MyJobApply = () => {
     const { user } = useContext(AuthContext);
     const email = user?.email;
     const [myApplyPosts, setMyApplyPosts] = useState([]);
-    console.log(myApplyPosts);
 
     useEffect(() => {
         if (email) {
-            axios.get(`http://localhost:5000/request-job/${email}`)
+            axios.get(`http://localhost:5000/my-request-job/${email}`)
                 .then(res => setMyApplyPosts(res?.data))
         }
     }, [email]);
 
-    const handleDelete = (id) => {
-        console.log(id);
-    }
     return (
         <div>
                   <div className="carousel-item relative my-10 lg:h-96 rounded-lg w-full flex flex-col justify-center items-center">
@@ -55,7 +51,7 @@ const MyJobApply = () => {
                                 <th>{myApplyPost.name}</th>
                                 <th>{myApplyPost.email}</th>
                                 <td>{myApplyPost.number}</td>
-                                <td>{myApplyPost.deadline}</td>
+                                <td>{myApplyPost.status}</td>
                                 <td>
                                     {/* <div className="flex gap-5">
                                         <NavLink to={`/update-job/${myApplyPost._id}`} className="p-4 rounded-xl text-xl text-white bg-[#ffa938]"> <FaCheck /></NavLink>
