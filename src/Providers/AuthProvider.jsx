@@ -4,6 +4,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { Bounce } from "react-toastify";
 import Swal from "sweetalert2";
 import auth from "../firebase.config";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 
@@ -17,7 +18,7 @@ const AuthProvider = ({ children }) => {
   const passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 
   const createUser = async (email, password) => {
-    if (!passwordRegex.test(password)) {
+    if (!passwordRegex.test(password)) { 
       toast.error('Weak password');
       return;
     }
@@ -97,6 +98,8 @@ const AuthProvider = ({ children }) => {
   }
 
   const logOutUser = async () => {
+    axios.post("http://localhost:5000/logout", {withCredentials: true})
+    .then(res => console.log("token response" , res?.data))
     await signOut(auth);
     toast.success('Log Out Successfully')
     setUser(null);
@@ -106,6 +109,11 @@ const AuthProvider = ({ children }) => {
     const unSubscribeUser = onAuthStateChanged(auth, (currentUser) => {
       setLoading(false);
       setUser(currentUser);
+      const loggedUser = { email: currentUser?.email}
+      if(currentUser){
+        axios.post("http://localhost:5000/jwt", loggedUser,{withCredentials:true})
+        // .then(res => console.log("token response" , res?.data))
+      }
     });
 
     return () => {

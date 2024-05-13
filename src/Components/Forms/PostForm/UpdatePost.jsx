@@ -1,15 +1,16 @@
-import { useContext, useState } from "react";
+import {  useState } from "react";
 import ReactDatePicker from "react-datepicker";
 import { useForm } from "react-hook-form";
 import "react-datepicker/dist/react-datepicker.css";
-import axios from "axios";
 import toast from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
-import { AuthContext } from "../../../Providers/AuthProvider";
+import useAuth from "../../../Hooks/useAuth";
+import useAxios from "../../../Hooks/useAxios";
 
 const UpdatePost = () => {
+    const axiosSecure = useAxios();
     const post = useLoaderData();
-    const { user } = useContext(AuthContext);
+    const { user } = useAuth();
     const [date, setDate] = useState(new Date());
     const day = date?.getDate();
     const month = date?.getMonth() + 1;
@@ -21,7 +22,7 @@ const UpdatePost = () => {
 
     const onSubmit = (newPost) => {
         const dataToSend = { ...newPost, email, name, deadline };
-        axios.put(`http://localhost:5000/Volunteers-post/${post?._id}`, dataToSend)
+        axiosSecure.put(`/Volunteers-post/${post?._id}`, dataToSend)
             .then(res => {
                 console.log(res.data);
                 if(res.data.modifiedCount > 0) {

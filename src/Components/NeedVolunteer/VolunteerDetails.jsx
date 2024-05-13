@@ -1,20 +1,20 @@
-import axios from "axios";
-import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
-import { AuthContext } from "../../Providers/AuthProvider";
+import useAuth from "../../Hooks/useAuth";
+import useAxios from "../../Hooks/useAxios";
 
 const VolunteerDetails = () => {
-  const {user} = useContext(AuthContext)
+  const axiosSecure = useAxios();
+  const {user} = useAuth();
   const { register, handleSubmit, formState: { errors } } = useForm();
   const volunteer = useLoaderData();
 const postAdminEmail = volunteer?.email;
 const status = "Pending";
   const onSubmit = (data) => {
     const dataToSend = {...data,postAdminEmail,status}
-    axios.post("http://localhost:5000/request-job", dataToSend)
-    axios.post("http://localhost:5000/my-request-job", dataToSend)
+    axiosSecure.post("/request-job", dataToSend)
+    axiosSecure.post("/my-request-job", dataToSend)
       .then(res => {
         if(res.data.insertedId){
           Swal.fire({
@@ -42,9 +42,16 @@ const status = "Pending";
       </div>
 
       <div className="flex flex-col lg:flex-row gap-8 w-full">
-        <div className="w-full lg:w-[70%] flex flex-col gap-5">
+        <div className="w-full lg:1/2 flex flex-col gap-5">
+        <div className="w-full flex justify-between items-center">
+            <h2 className="text-xl font-bold"> Vacancy: {volunteer?.volunteersNeeded}</h2>
+            <h2 className="text-xl font-bold">Deadline: {volunteer?.deadline}</h2>
+          </div>
           <h1 className="text-4xl font-bold ">{volunteer?.postTitle}</h1>
-
+          <p className="text-xl font-normal"><span className="text-xl font-semibold">Description: </span> {volunteer?.description}</p>
+          <h5 className="text-xl font-semibold">Category: <span className="text-lg font-medium">{volunteer?.category}</span></h5>
+          <h5 className="text-xl font-semibold">Location: <span className="text-lg font-medium">{volunteer?.location}</span></h5>
+          <h5 className="text-2xl font-bold">Buyer Details:</h5>
           <div className="flex gap-5 items-center">
             <div className="avatar">
               <div className="w-16 rounded-full">
@@ -57,20 +64,14 @@ const status = "Pending";
             </div>
           </div>
           <img src={volunteer?.thumbnail} alt="thumbnail" />
-          <h5 className="text-2xl font-bold">About this Job Post</h5>
-          <h5 className="text-xl font-semibold">Category: <span className="text-lg font-medium">{volunteer?.category}</span></h5>
-          <h5 className="text-xl font-semibold">Location: <span className="text-lg font-medium">{volunteer?.location}</span></h5>
-          <p className="text-xl font-normal"><span className="text-xl font-semibold">Description: </span> {volunteer?.description}</p>
+
         </div>
 
         {/* -------------------------------------------------------------------------------------- */}
 
-        <div className="w-full lg:w-[30%]">
-          <div className="w-full flex justify-between items-center">
-            <h2 className="text-xl font-bold"> Vacancy: {volunteer?.volunteersNeeded}</h2>
-            <h2 className="text-xl font-bold">Deadline: {volunteer?.deadline}</h2>
-          </div>
-          <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5 mt-10 lg:mt-28">
+        <div className="w-full lg:1/2">
+          <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5 ">
+            <h1 className="text-2xl font-bold">Apply This Job:</h1>
             <input {...register("name", { required: true })} defaultValue={user?.displayName} name="name" type="text" placeholder="Your Name" className="input input-bordered input-warning w-full" />
             {errors.name && <span className="text-sm text-red-500 font-medium -mt-4">Please enter your name</span>}
 

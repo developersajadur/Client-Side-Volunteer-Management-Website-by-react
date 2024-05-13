@@ -1,24 +1,25 @@
-import axios from "axios";
 import { Link, NavLink } from "react-router-dom";
 import { FaPen } from "react-icons/fa6";
 import { MdDelete } from "react-icons/md";
 import { FiEye } from "react-icons/fi";
 import Swal from "sweetalert2";
-import { useContext, useState, useEffect } from "react";
-import { AuthContext } from "../../Providers/AuthProvider";
+import {  useState, useEffect } from "react";
+import useAuth from "../../Hooks/useAuth";
+import useAxios from "../../Hooks/useAxios";
 
 const MyJobPost = () => {
-    const { user } = useContext(AuthContext);
+    const axiosSecure = useAxios();
+    const { user } = useAuth();
     const email = user?.email;
     const [myJobPosts, setMyJobPosts] = useState([]);
 
     useEffect(() => {
         if (email) {
-            axios.get(`http://localhost:5000/volunteers-post/user/${email}`)
+            axiosSecure.get(`/volunteers-post/user/${email}`, { withCredentials: true })
                 .then(res => setMyJobPosts(res?.data))
                 .catch(err => console.error("Error fetching job posts:", err));
         }
-    }, [email]);
+    }, [email, axiosSecure]);
 
     const handleDelete = (id) => {
         Swal.fire({
@@ -31,16 +32,21 @@ const MyJobPost = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:5000/volunteers-post/${id}`)
-                    .then(res => res.data)
-                    .then(data => {
-                        if (data.deletedCount > 0) {
+                axiosSecure.delete(`/volunteers-post/${id}`)
+                    .then(res => {
+                        if (res.data.deletedCount > 0) {
                             Swal.fire({
                                 title: "Deleted!",
                                 text: "Your file has been deleted.",
                                 icon: "success"
                             });
                             setMyJobPosts(myJobPosts.filter(spot => spot._id !== id));
+                        } else {
+                            Swal.fire({
+                                title: "Error!",
+                                text: "Failed to delete the post.",
+                                icon: "error"
+                            });
                         }
                     })
                     .catch(err => {

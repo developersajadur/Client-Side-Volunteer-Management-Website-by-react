@@ -22,7 +22,8 @@ import UpdatePost from './Components/Forms/PostForm/UpdatePost';
 import { Toaster } from 'react-hot-toast';
 import Profile from './Components/Profile/Profile';
 import JobRequest from './Components/JobRequest/JobRequest';
-
+import {  QueryClient, QueryClientProvider } from '@tanstack/react-query';
+const queryClient = new QueryClient()
 
 
 const router = createBrowserRouter([
@@ -56,8 +57,8 @@ const router = createBrowserRouter([
       },
       {
         path:"/need-volunteer",
-        element:<NeedVolunteer></NeedVolunteer>,
-        loader:() => fetch("http://localhost:5000/volunteers-post")
+        element:<NeedVolunteer></NeedVolunteer>
+        // loader:() => fetch("http://localhost:5000/volunteers-post")
       },
       {
         path:"/volunteer-details/:id",
@@ -92,7 +93,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
       <Toaster></Toaster>
-    <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+      </QueryClientProvider>
     </AuthProvider>
   </React.StrictMode>,
 )

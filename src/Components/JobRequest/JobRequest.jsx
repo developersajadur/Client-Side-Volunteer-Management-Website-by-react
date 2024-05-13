@@ -1,41 +1,52 @@
-import axios from "axios";
-import { useContext, useState, useEffect } from "react";
-import { AuthContext } from "../../Providers/AuthProvider";
-import {  NavLink } from "react-router-dom";
+
+import { useState, useEffect } from "react";
 import { BiBlock } from "react-icons/bi";
 import { FaCheck } from "react-icons/fa";
 import toast from "react-hot-toast";
+import useAuth from "../../Hooks/useAuth";
+import useAxios from "../../Hooks/useAxios";
+
 const JobRequest = () => {
-    const { user } = useContext(AuthContext);
+    const axiosSecure = useAxios();
+    const { user } = useAuth();
     const email = user?.email;
     const [jobRequests, setJobRequests] = useState([]);
-    console.log(jobRequests);
 
     useEffect(() => {
         if (email) {
-            axios.get(`http://localhost:5000/request-job/${email}`)
+            axiosSecure.get(`/request-job/${email}`)
                 .then(res => setJobRequests(res?.data))
+                .catch(err => console.error("Error fetching job requests:", err));
         }
-    }, [email]);
-// -------------handleChangeStatus--------------
-const handleChangeStatus = (id, previousStatus , status) => {
-    if(status === previousStatus) {
-        toast.error("Already updated");
-        return;
-    }
-    axios.patch(`http://localhost:5000/job/${id}`, { status })
-        .then(res => {
-            if (res.data.modifiedCount > 0) {
-                toast.success("Job Status updated successfully");
-            }
-        })
-}
-    const handleReject = (id) => {
-        handleChangeStatus(id, "pending", "Rejected");
-    }
+    }, [email, axiosSecure]);
+
+    const handleChangeStatus = (id, previousStatus, status) => {
+        if (status === previousStatus) {
+            toast.error("Already updated");
+            return;
+        }
+        axiosSecure.patch(`/job/${id}`, { status })
+            .then(res => {
+                if (res.data.modifiedCount > 0) {
+                    toast.success("Job Status updated successfully");
+                    setJobRequests(prevJobRequests => prevJobRequests.map(job => {
+                        if (job._id === id) {
+                            return { ...job, status };
+                        }
+                        return job;
+                    }));
+                }
+            })
+            .catch(err => console.error("Error updating job status:", err));
+    };
+
+    const handleReject = (id, status) => {
+        handleChangeStatus(id, status, "Rejected");
+    };
+
     return (
         <div>
-                  <div className="carousel-item relative my-10 lg:h-96 rounded-lg w-full flex flex-col justify-center items-center">
+            <div className="carousel-item relative my-10 lg:h-96 rounded-lg w-full flex flex-col justify-center items-center">
                 <img
                     src="/public/page-top-img.jpg"
                     className="w-full rounded-lg lg:h-96"
@@ -48,7 +59,6 @@ const handleChangeStatus = (id, previousStatus , status) => {
                 </div>
             </div>
 
-            {/* ------------------------------------- */}
             <div className="overflow-x-auto">
                 <table className="table">
                     <thead>
@@ -72,7 +82,7 @@ const handleChangeStatus = (id, previousStatus , status) => {
                                 <td>
                                     <div className="flex gap-5">
                                         <button onClick={() => handleChangeStatus(jobRequest._id, jobRequest.status, "In Progress")} className="p-4 rounded-xl text-xl text-white bg-[#ffa938]"> <FaCheck /></button>
-                                        <button onClick={() => handleReject(jobRequest._id, jobRequest.status, "Rejected")} className="p-4 rounded-xl text-xl text-white bg-[#82561b]"><BiBlock /></button>
+                                        <button onClick={() => handleReject(jobRequest._id, jobRequest.status)} className="p-4 rounded-xl text-xl text-white bg-[#82561b]"><BiBlock /></button>
                                     </div>
                                 </td>
                             </tr>
@@ -80,7 +90,6 @@ const handleChangeStatus = (id, previousStatus , status) => {
                     </tbody>
                 </table>
             </div>
-            
         </div>
     );
 };

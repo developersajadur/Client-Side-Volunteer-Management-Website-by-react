@@ -1,20 +1,18 @@
-import axios from "axios";
-import { useContext, useState, useEffect } from "react";
-import { AuthContext } from "../../Providers/AuthProvider";
-// import {  NavLink } from "react-router-dom";
-// import { BiBlock } from "react-icons/bi";
-// import { FaCheck } from "react-icons/fa";
+import {  useState, useEffect } from "react";
+import useAuth from "../../Hooks/useAuth";
+import useAxios from "../../Hooks/useAxios";
 const MyJobApply = () => {
-    const { user } = useContext(AuthContext);
+    const axiosSecure = useAxios();
+    const { user } = useAuth();
     const email = user?.email;
     const [myApplyPosts, setMyApplyPosts] = useState([]);
 
     useEffect(() => {
         if (email) {
-            axios.get(`http://localhost:5000/my-request-job/${email}`)
+            axiosSecure.get(`/my-request-job/${email}`)
                 .then(res => setMyApplyPosts(res?.data))
         }
-    }, [email]);
+    }, [email,axiosSecure]);
 
     return (
         <div>

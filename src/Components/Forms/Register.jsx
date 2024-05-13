@@ -1,12 +1,12 @@
-import { useContext, useState } from "react";
+import {  useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Link, Navigate } from "react-router-dom";
-import { AuthContext } from "../../Providers/AuthProvider";
+import useAuth from "../../Hooks/useAuth";
 
 const Register = () => {
-    const { createUser,updateUserProfile, googleLogin, twitterLogin } = useContext(AuthContext);
+    const { createUser,updateUserProfile, googleLogin, twitterLogin } = useAuth();
     const [showPassword, setShowPassword] = useState(false);
     const { register, handleSubmit, formState: { errors } } = useForm();
 

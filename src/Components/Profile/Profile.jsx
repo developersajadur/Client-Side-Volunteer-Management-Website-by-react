@@ -1,13 +1,12 @@
-import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { ToastContainer } from "react-toastify";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
-import { AuthContext } from "../../Providers/AuthProvider";
+import useAuth from "../../Hooks/useAuth";
 
 const Profile = () => {
-    const {user , updateUserProfile} = useContext(AuthContext);
+    const {user , updateUserProfile} = useAuth();
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 

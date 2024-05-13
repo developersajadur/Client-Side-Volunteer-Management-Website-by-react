@@ -1,13 +1,14 @@
-import { useContext, useState } from "react";
+import {  useState } from "react";
 import ReactDatePicker from "react-datepicker";
 import { useForm } from "react-hook-form";
 import "react-datepicker/dist/react-datepicker.css";
-import { AuthContext } from "../../../Providers/AuthProvider";
-import axios from "axios";
 import Swal from "sweetalert2";
+import useAuth from "../../../Hooks/useAuth";
+import useAxios from "../../../Hooks/useAxios";
 
 const VolunteerPost = () => {
-    const {user} = useContext(AuthContext)
+    const axiosSecure = useAxios();
+    const {user} = useAuth();
     const [date, setDate] = useState(new Date());
     const day = date.getDate();
     const month = date.getMonth() + 1;
@@ -19,7 +20,7 @@ const VolunteerPost = () => {
     const { register, handleSubmit } = useForm();
     const onSubmit = (newPost) => {
         const dataToSend = { ...newPost,email,name,deadline };
-        axios.post("http://localhost:5000/Volunteers-post", dataToSend)
+        axiosSecure.post("/Volunteers-post", dataToSend)
         .then(res =>{
             if(res.data.insertedId){
                 Swal.fire({
