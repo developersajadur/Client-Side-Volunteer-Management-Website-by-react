@@ -21,7 +21,10 @@ const Banner = () => {
           slidesPerView={1}
           spaceBetween={30}
           centeredSlides={true}
-          pagination={true}
+          pagination={{
+            clickable: true,
+          }}
+          
           loop={true}
           mousewheel={true}
           autoplay={{ delay: 4500, disableOnInteraction: false }}

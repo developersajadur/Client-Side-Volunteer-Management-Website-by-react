@@ -1,0 +1,59 @@
+
+[
+  {
+    "id": 1,
+    "client_name": "John Smith",
+    "address": "Main Street",
+    "img": "john_smith.jpg",
+    "review": "Fantastic service! Highly recommend. Friendly staff and quick turnaround. Will definitely be returning. The overall experience was amazing."
+  },
+  {
+    "id": 2,
+    "client_name": "Emily Johnson",
+    "address": "Elm Avenue",
+    "img": "emily_johnson.jpg",
+    "review": "Absolutely delighted with the quality of service received. Professionalism at its best. Thank you! The staff's attention to detail was impressive."
+  },
+  {
+    "id": 3,
+    "client_name": "Michael Brown",
+    "address": "Oak Street",
+    "img": "michael_brown.jpg",
+    "review": "Exemplary service. Courteous and efficient. Couldn't have asked for better. Will definitely recommend to friends. The service team's dedication to customer satisfaction was evident."
+  },
+  {
+    "id": 4,
+    "client_name": "Sarah Davis",
+    "address": "Pine Street",
+    "img": "sarah_davis.jpg",
+    "review": "Incredible experience! From start to finish, everything was smooth. Kudos to the team! The service exceeded my expectations in every way."
+  },
+  {
+    "id": 5,
+    "client_name": "David Martinez",
+    "address": "Cedar Avenue",
+    "img": "david_martinez.jpg",
+    "review": "Superb service. Friendly and knowledgeable staff. Highly satisfied with the outcome. The service team's professionalism and expertise were evident."
+  },
+  {
+    "id": 6,
+    "client_name": "Jessica Wilson",
+    "address": "Maple Street",
+    "img": "jessica_wilson.jpg",
+    "review": "Exceptional service! The staff went above and beyond to ensure everything was perfect. Will definitely return. I was thoroughly impressed by the level of care."
+  },
+  {
+    "id": 7,
+    "client_name": "Christopher Lee",
+    "address": "Birch Street",
+    "img": "christopher_lee.jpg",
+    "review": "Outstanding service! Timely and professional. Can't thank them enough. The service team's efficiency and professionalism were exceptional."
+  },
+  {
+    "id": 8,
+    "client_name": "Amanda Taylor",
+    "address": "Spruce Avenue",
+    "img": "amanda_taylor.jpg",
+    "review": "Impressed with the level of service. Polite and efficient staff. Highly recommended. The service team's dedication to excellence was evident."
+  }
+]

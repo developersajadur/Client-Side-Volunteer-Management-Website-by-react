@@ -33,7 +33,7 @@ const FlexMenuCard = ({volunteer}) => {
             <h4 className="font-bold">Vacancy: {volunteersNeeded}</h4>
         </td>
         <th>
-        <Link
+             <Link
               to={`/volunteer-details/${_id}`}
               className=" text-white px-6 py-2 rounded-lg font-semibold bg-[#FF5528]"
             >
