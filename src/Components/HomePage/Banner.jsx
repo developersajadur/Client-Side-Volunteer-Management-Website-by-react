@@ -39,7 +39,7 @@ const Banner = () => {
     <div className="absolute flex flex-col h-full items-center justify-center left-0 top-0 gap-8 bg-gradient-to-r lg:pl-28 from-[#151515] to-[rgba(21, 21, 21, 0)]">
       <h1 className="text-3xl lg:text-6xl lg:w-[60%] text-white text-start font-bold">Join Our Community of VolunteerHub</h1>
       <p className="text-white text-start">Join us and make a difference. Explore volunteer opportunities in various fields. <br /> Together, we create positive change</p>
-          <Link className="btn text-white lg:mr-96 lg:-ml-20 w-fit bg-[#FF3811] border-none" to="">Become A Volunteer</Link>
+          <Link to="/need-volunteer" className="btn text-white lg:mr-96 lg:-ml-20 w-fit bg-[#FF3811] border-none">Become A Volunteer</Link>
 
     </div>
   </div>
@@ -54,7 +54,7 @@ const Banner = () => {
     <div className="absolute flex flex-col h-full items-center justify-center left-0 top-0 gap-8 bg-gradient-to-r lg:pl-28 from-[#151515] to-[rgba(21, 21, 21, 0)]">
       <h1 className="text-3xl lg:text-6xl lg:w-[70%] text-start text-white font-bold">Meet Our Incredible Volunteers</h1>
       <p className="text-white text-start">Discover the faces behind our impact. Our volunteers drive change, inspire hope, <br /> and make a difference. Join us in our mission to create a brighter tomorrow.</p>
-          <Link className="btn text-white w-fit bg-[#FF3811] lg:mr-96 lg:-ml-20 border-none" to=""> Get Volunteers</Link>
+          <Link className="btn text-white w-fit bg-[#FF3811] lg:mr-96 lg:-ml-20 border-none" to="/job-post"> Get Volunteers</Link>
 
     </div>
   </div>
