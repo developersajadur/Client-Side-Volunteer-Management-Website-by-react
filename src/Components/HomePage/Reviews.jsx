@@ -18,7 +18,8 @@ const Reviews = () => {
 
     return (
         <div className="mt-20 flex flex-col justify-center">
-             <h1 className="text-2xl lg:text-5xl mb-10 font-bold text-center">Our Satisfied Clients</h1>
+             <h1 className="text-2xl lg:text-5xl mb-4 font-bold text-center">Our Satisfied Clients</h1>
+             <p className="text-center font-medium text-lg mb-10">Discover the satisfaction of our clients through unparalleled service, reliability, <br /> and results. Join our community and experience excellence firsthand</p>
              <div className="">
              <Swiper
         spaceBetween={30}

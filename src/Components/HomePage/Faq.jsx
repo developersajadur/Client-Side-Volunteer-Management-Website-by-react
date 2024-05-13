@@ -2,9 +2,10 @@
 const Faq = () => {
     return (
         <div className="mt-20">
-               <h1 className="text-2xl lg:text-4xl text-center font-bold mb-10">Frequently Asked Questions</h1>
-        <div className="flex w-full justify-center gap-5 ">
-            <div className="w-1/2">
+               <h1 className="text-2xl lg:text-4xl text-center font-bold mb-4">Frequently Asked Questions</h1>
+               <p className="text-center font-medium text-lg mb-10">Commonly asked questions compiled to provide quick answers and solutions,<br /> addressing common queries and concerns efficiently for users' convenience.</p>
+        <div className="flex flex-col lg:flex-row w-full justify-center gap-5 ">
+            <div className="lg:w-1/2">
                 
                 <div className="flex flex-col gap-5">
                 <div className="collapse collapse-arrow bg-base-200">
@@ -45,7 +46,7 @@ const Faq = () => {
 </div>
                 </div>
             </div>
-            <div className="w-1/2">
+            <div className="lg:w-1/2">
                 <img className="h-96 w-full rounded-2xl" src="/public/faq-1.jpg" alt="" />
             </div>
         </div>
