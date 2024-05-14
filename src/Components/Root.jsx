@@ -6,8 +6,8 @@ import Header from "./Header";
 const Root = () => {
     return (
         <div>
-            <div className="container mx-auto">
             <Header></Header>
+            <div className="container mx-auto">
             <Outlet></Outlet>
             </div>
             <Footer></Footer>

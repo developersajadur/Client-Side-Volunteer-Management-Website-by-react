@@ -24,16 +24,16 @@ const Contact = () => {
                 <img src="/public/contact-img.png" alt="" />
             </div>
             <div className="1/2">
-                <h1 className="text-2xl lg:text-5xl font-bold text-start mb-5">Our Volunteer Become Us <br />
+                <h1 className="text-2xl lg:text-4xl font-bold text-start mb-5">Our Volunteer Become Us <br />
 This Contact Now!</h1>
 <p className="text-start font-medium text-lg mb-10">Poor address a range of simply application and infrastructure this <br /> of passages of available  but the majority have suffered poor <br /> alteration in some form.</p>
 
 <form onSubmit={handleSubmit} className="flex flex-col gap-8">
-    <div className="flex gap-8">
+    <div className="flex flex-col lg:flex-row gap-8">
     <input required type="text" placeholder="Your Name" className="input input-bordered input-warning w-full" />
     <input required type="email" placeholder="Your Email" className="input input-bordered input-warning w-full" />
     </div>
-    <div className="flex gap-8">
+    <div className="flex flex-col lg:flex-row gap-8">
     <input required type="number" placeholder="Your Number" className="input input-bordered input-warning w-full" />
     <input required type="Subject" placeholder="Subject" className="input input-bordered input-warning w-full" />
     </div>

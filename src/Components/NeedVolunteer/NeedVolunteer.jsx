@@ -87,7 +87,7 @@ const NeedVolunteer = () => {
           <input name="search" type="text" className="grow" placeholder="Search" />
           <button className="bg-[#E7A500] p-2 rounded-lg font-medium text-white translate-x-3">Search</button>
         </form>
-        <div className="flex gap-5">
+        <div className="flex flex-col lg:flex-row gap-5">
     <button onClick={handleGrid} className=""><CgMenuGridR className="text-4xl" /></button>
     <button onClick={handleFlex} className=""><GiHamburgerMenu className="text-4xl" /></button>
         </div>

@@ -48,7 +48,7 @@ const Footer = () => {
   </nav>
 </footer>
 <div className=" bg-[#6A7A76] border border-[#6A7A76] my-5 lg:mx-10"></div>
-<p className="text-[#6A7A76] text-lg text-center font-semibold">© Copyright 2024 by Sajadur Rahman</p>
+<p className="text-[#6A7A76] text-lg text-center font-semibold pb-5">© Copyright 2024 by Sajadur Rahman</p>
         </div>
     );
 };
