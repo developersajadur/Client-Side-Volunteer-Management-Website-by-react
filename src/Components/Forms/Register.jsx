@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Link, Navigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
     const { createUser,updateUserProfile, googleLogin, twitterLogin } = useAuth();
@@ -52,9 +53,14 @@ const Register = () => {
 
     return (
         <div>
+            <Helmet>
+               <title>
+              Register Now
+               </title>
+            </Helmet>
             <div className="carousel-item relative my-10 lg:h-96 rounded-lg w-full flex flex-col justify-center items-center">
                 <img
-                    src="/public/page-top-img.jpg"
+                    src="page-top-img.jpg"
                     className="w-full rounded-lg lg:h-96"
                     alt="carousel"
                 />
@@ -97,8 +103,8 @@ const Register = () => {
                     </div>
                     <div className="divider">Register With</div>
                     <div className="flex gap-5 justify-center pt-4">
-                        <button onClick={handleGoogleLogin}><img className="h-9 w-9 rounded-full" src="/public/google-icon.png" alt="Google" /></button>
-                        <button onClick={handleTwitterLogin}><img className="h-9 w-9 rounded-full" src="/public/twitter-icon.png" alt="Twitter" /></button>
+                        <button onClick={handleGoogleLogin}><img className="h-9 w-9 rounded-full" src="google-icon.png" alt="Google" /></button>
+                        <button onClick={handleTwitterLogin}><img className="h-9 w-9 rounded-full" src="twitter-icon.png" alt="Twitter" /></button>
                     </div>
                 </div>
             </div>

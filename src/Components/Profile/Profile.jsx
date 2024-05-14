@@ -34,7 +34,7 @@ const Profile = () => {
             </Helmet>
             <div className="flex flex-col gap-5">
             <div className="h-full w-full flex justify-center">
-               <img className="rounded-full border-8 border-[#E7A500] lg:h-72 lg:w-72" src={user?.photoURL || "../../public/user-img.png" }  alt="Profile Picture" />
+               <img className="rounded-full border-8 border-[#E7A500] lg:h-72 lg:w-72" src={user?.photoURL || "../..user-img.png" }  alt="Profile Picture" />
             </div>
             <h1 className="font-bold text-3xl lg:text-4xl text-center">{user?.displayName || "User Name Not Found"}</h1>
             <p className="text-center text-lg lg:text-xl font-bold">{user?.email || "Email Not Found"}</p>

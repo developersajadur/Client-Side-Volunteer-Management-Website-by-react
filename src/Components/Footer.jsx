@@ -11,7 +11,7 @@ const Footer = () => {
 
             <footer className="footer p-10 text-[#6A7A76] text-lg font-medium">
   <aside>
-   <img src="/public/logo.png" className="w-52" alt="" />
+   <img src="logo.png" className="w-52" alt="" />
     <p>We help businesses maximize their online <br /> presence with a personalized approach <br /> to digital marketing.</p>
     <div className="flex gap-5 items-center">
     <FiPhoneCall className="text-5xl text-[#E29617]" />

@@ -3,6 +3,7 @@ import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import useAxios from "../../Hooks/useAxios";
+import { Helmet } from "react-helmet";
 
 const VolunteerDetails = () => {
   const axiosSecure = useAxios();
@@ -28,9 +29,14 @@ const status = "Pending";
 
   return (
     <div>
+      <Helmet>
+               <title>
+              {volunteer?.postTitle}
+               </title>
+            </Helmet>
       <div className="carousel-item relative my-10 lg:h-96 rounded-lg w-full flex flex-col justify-center items-center">
         <img
-          src="/public/page-top-img.jpg"
+          src="/page-top-img.jpg"
           className="w-full rounded-lg lg:h-96"
           alt="carousel"
         />

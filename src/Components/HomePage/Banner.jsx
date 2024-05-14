@@ -36,8 +36,8 @@ const Banner = () => {
             <SwiperSlide className="carousel w-full">
   <div className="carousel-item relative  w-full flex flex-col justify-center items-center">
     <img
-      src="/public/banner-1.jpg"
-      className="w-full rounded-lg"
+      src="banner-1.jpg"
+      className="w-full rounded-lg" 
     />
     <div className="absolute flex flex-col h-full items-center justify-center left-0 top-0 gap-8 bg-gradient-to-r lg:pl-28 from-[#151515] to-[rgba(21, 21, 21, 0)]">
       <h1 className="text-3xl lg:text-6xl lg:w-[60%] text-white text-start font-bold">Join Our Community of VolunteerHub</h1>
@@ -51,7 +51,7 @@ const Banner = () => {
             <SwiperSlide className="carousel w-full">
   <div className="carousel-item relative  w-full flex flex-col justify-center items-center">
     <img
-      src="/public/banner-2.jpg"
+      src="banner-2.jpg"
       className="w-full rounded-lg"
     />
     <div className="absolute flex flex-col h-full items-center justify-center left-0 top-0 gap-8 bg-gradient-to-r lg:pl-28 from-[#151515] to-[rgba(21, 21, 21, 0)]">
@@ -66,7 +66,7 @@ const Banner = () => {
             <SwiperSlide className="carousel w-full">
   <div className="carousel-item relative  w-full flex flex-col justify-center items-center">
     <img
-      src="/public/banner-3.jpg"
+      src="banner-3.jpg"
       className="w-full h-full rounded-lg"
     />
     <div className="absolute flex flex-col h-full items-center justify-center left-0 top-0 gap-8 bg-gradient-to-r lg:pl-28 from-[#151515] to-[rgba(21, 21, 21, 0)]">

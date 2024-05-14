@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 
 const Contact = () => {
     const handleSubmit = e => {
@@ -6,9 +7,14 @@ const Contact = () => {
     }
     return (
         <div>
+            <Helmet>
+               <title>
+              Contact With Us
+               </title>
+            </Helmet>
                  <div className="carousel-item relative my-10 lg:h-96 rounded-lg w-full flex flex-col justify-center items-center">
                 <img
-                    src="/public/page-top-img.jpg"
+                    src="page-top-img.jpg"
                     className="w-full rounded-lg lg:h-96"
                     alt="carousel"
                 />
@@ -21,7 +27,7 @@ const Contact = () => {
 
         <div className="flex flex-col gap-12 lg:flex-row">
             <div className="1/2">
-                <img src="/public/contact-img.png" alt="" />
+                <img src="contact-img.png" alt="" />
             </div>
             <div className="1/2">
                 <h1 className="text-2xl lg:text-4xl font-bold text-start mb-5">Our Volunteer Become Us <br />

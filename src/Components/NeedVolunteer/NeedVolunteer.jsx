@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { CgMenuGridR } from "react-icons/cg";
 import { GiHamburgerMenu } from "react-icons/gi";
 import FlexMenuCard from "./FlexMenuCard";
+import { Helmet } from "react-helmet";
 
 const NeedVolunteer = () => {
   const [volunteers, setVolunteers] = useState([]);
@@ -69,10 +70,15 @@ const NeedVolunteer = () => {
 
   return (
     <div className="w-full flex flex-col justify-center items-center">
+      <Helmet>
+               <title>
+              Join As A Volunteer
+               </title>
+            </Helmet>
       
       <div className="carousel-item relative my-10 lg:h-96 rounded-lg w-full flex flex-col justify-center items-center">
         <img
-          src="/public/page-top-img.jpg"
+          src="page-top-img.jpg"
           className="w-full rounded-lg lg:h-96"
           alt="carousel"
         />
