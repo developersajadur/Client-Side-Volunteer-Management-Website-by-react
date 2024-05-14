@@ -19,7 +19,7 @@ const NeedVolunteer = () => {
   };
   useEffect(() => {
     // Fetch volunteer posts from the API
-    axios.get(`http://localhost:5000/all-volunteers-post?page=${currentPage}&size=${itemPerPage}&search=${search}`)
+    axios.get(`${import.meta.env.VITE_API_URL}/all-volunteers-post?page=${currentPage}&size=${itemPerPage}&search=${search}`)
       .then(res => {
         setVolunteers(res.data);
       })
@@ -28,7 +28,7 @@ const NeedVolunteer = () => {
 
   // Fetch total count of volunteer posts
   useEffect(() => {
-    axios.get("http://localhost:5000/all-volunteers-post-count")
+    axios.get(`${import.meta.env.VITE_API_URL}/all-volunteers-post-count`)
       .then(res => {
         setCount(res.data.count);
       })

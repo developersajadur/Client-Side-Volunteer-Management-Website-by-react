@@ -3,7 +3,7 @@ import useAuth from "./useAuth";
 import { Navigate } from "react-router-dom";
 
 const axiosSecure = axios.create({
-    baseURL: "http://localhost:5000/",
+    baseURL: `${import.meta.env.VITE_API_URL}/`,
     withCredentials: true,
 });
 

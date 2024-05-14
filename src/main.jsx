@@ -58,12 +58,11 @@ const router = createBrowserRouter([
       {
         path:"/need-volunteer",
         element:<NeedVolunteer></NeedVolunteer>
-        // loader:() => fetch("http://localhost:5000/volunteers-post")
       },
       {
         path:"/volunteer-details/:id",
         element:<PrivateRoute><VolunteerDetails></VolunteerDetails></PrivateRoute>,
-        loader:({params}) => fetch(`http://localhost:5000/volunteer-details/${params.id}`)
+        loader:({params}) => fetch(`${import.meta.env.VITE_API_URL}/volunteer-details/${params.id}`)
       },
       {
         path:"/job-post",
@@ -79,7 +78,7 @@ const router = createBrowserRouter([
       {
         path:"/update-job/:id",
         element:<PrivateRoute><UpdatePost></UpdatePost>,</PrivateRoute>,
-        loader:({params}) => fetch(`http://localhost:5000/volunteers-post/${params.id}`)
+        loader:({params}) => fetch(`${import.meta.env.VITE_API_URL}/volunteers-post/${params.id}`)
       },
       {
         path:"/job-request",

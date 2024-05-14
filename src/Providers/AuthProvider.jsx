@@ -98,7 +98,7 @@ const AuthProvider = ({ children }) => {
   }
 
   const logOutUser = async () => {
-    axios.post("http://localhost:5000/logout", {withCredentials: true})
+    axios.post(`${import.meta.env.VITE_API_URL}/logout`, {withCredentials: true})
     .then(res => console.log("token response" , res?.data))
     await signOut(auth);
     toast.success('Log Out Successfully')
@@ -111,7 +111,7 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
       const loggedUser = { email: currentUser?.email}
       if(currentUser){
-        axios.post("http://localhost:5000/jwt", loggedUser,{withCredentials:true})
+        axios.post(`${import.meta.env.VITE_API_URL}/jwt`, loggedUser,{withCredentials:true})
         // .then(res => console.log("token response" , res?.data))
       }
     });

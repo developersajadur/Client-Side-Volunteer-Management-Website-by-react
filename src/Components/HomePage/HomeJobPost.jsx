@@ -9,7 +9,7 @@ const HomeJobPost = () => {
 
     useEffect(() => {
         // Fetch volunteer posts from the API
-        axios.get(`http://localhost:5000/all-volunteers-post?page=${page}`)
+        axios.get(`${import.meta.env.VITE_API_URL}/all-volunteers-post?page=${page}`)
           .then(res => {
             setVolunteers(res.data);
           })
