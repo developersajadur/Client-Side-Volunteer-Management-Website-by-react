@@ -24,6 +24,7 @@ import Profile from './Components/Profile/Profile';
 import JobRequest from './Components/JobRequest/JobRequest';
 import {  QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import BlogDetails from './Components/Blog/BlogDetails';
+import ErrorPage from './Components/ErrorPage';
 const queryClient = new QueryClient()
 
 
@@ -31,6 +32,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement:<ErrorPage></ErrorPage>,
     children:[
       {
         path:"/",

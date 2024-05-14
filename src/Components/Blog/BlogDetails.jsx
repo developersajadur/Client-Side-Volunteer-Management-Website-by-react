@@ -4,7 +4,7 @@ import { Link, useLoaderData, useParams } from "react-router-dom";
 
 const BlogDetails = () => {
 
-    const blogs = useLoaderData()
+    const blogs = useLoaderData() 
     const {blogId} = useParams()
     const blog = blogs.find (blog => blog.id == blogId);
     const {banner,short_title , big_description, description} = blog;
@@ -15,9 +15,18 @@ const BlogDetails = () => {
               { short_title }
             </title>
           </Helmet>
-            <div className="w-full  text-center py-5 rounded-xl bg-[#1313130D] mt-10 mb-5">
-            <h1 className="text-4xl font-bold">{short_title}</h1>
-        </div>
+          <div className="carousel-item relative my-10 lg:h-96 rounded-lg w-full flex flex-col justify-center items-center">
+                <img
+                    src="/page-top-img.jpg"
+                    className="w-full rounded-lg lg:h-96"
+                    alt="carousel"
+                />
+                <div className="absolute flex flex-col rounded-lg h-full items-center justify-center left-0 top-0 gap-8 bg-gradient-to-r pl-16 lg:pl-28 from-[#151515] to-[rgba(21, 21, 21, 0)]">
+                    <h1 className="text-3xl lg:text-6xl text-white font-bold">
+                        Blog Details
+                    </h1>
+                </div>
+            </div>
             <div className="card w-full p-0">
   <figure><img className="h-full lg:h-96 w-full lg:w-[100%]" src={banner} alt="Shoes" /></figure>
   <div className="card-body">
