@@ -12,7 +12,7 @@ const Blog = ({blog}) => {
     return (
         <div  data-aos="fade-up" data-aos-duration="2000" className="">
             <Link to={`/blog/${id}`}>
-            <div className="card flex w-full border-[1px]">
+            <div className="card flex w-full border-[1px] border-warning">
   <figure className="px-10 pt-10">
     <img src={banner} className="rounded-xl lg:h-52 lg:w-96" />
   </figure>

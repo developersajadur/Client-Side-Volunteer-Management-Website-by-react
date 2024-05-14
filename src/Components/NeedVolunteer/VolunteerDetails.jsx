@@ -7,33 +7,52 @@ import { Helmet } from "react-helmet";
 
 const VolunteerDetails = () => {
   const axiosSecure = useAxios();
-  const {user} = useAuth();
+  const { user } = useAuth();
   const { register, handleSubmit, formState: { errors } } = useForm();
   const volunteer = useLoaderData();
-const postAdminEmail = volunteer?.email;
-const status = "Pending";
+  const postAdminEmail = volunteer?.email;
+  const status = "Pending";
+
+  const { volunteersNeeded } = volunteer;
+
   const onSubmit = (data) => {
-    const dataToSend = {...data,postAdminEmail,status}
-    axiosSecure.post("/request-job", dataToSend)
+    if (volunteersNeeded === 0) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "No Volunteers Needed"
+      });
+      return;
+    }
+    if (postAdminEmail === user.email) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "You Can't Apply For Your Own Post"
+      });
+      return;
+    }
+    const dataToSend = { ...data, postAdminEmail, status };
+    axiosSecure.post("/request-job", dataToSend);
     axiosSecure.post("/my-request-job", dataToSend)
       .then(res => {
-        if(res.data.insertedId){
+        if (res.data.insertedId) {
           Swal.fire({
             icon: "success",
             title: "Applying successfully",
             text: "If You Are Qualified, we will notify you"
           });
         }
-      })
+      });
   };
 
   return (
     <div>
       <Helmet>
-               <title>
-              {volunteer?.postTitle}
-               </title>
-            </Helmet>
+        <title>
+          {volunteer?.postTitle}
+        </title>
+      </Helmet>
       <div className="carousel-item relative my-10 lg:h-96 rounded-lg w-full flex flex-col justify-center items-center">
         <img
           src="/page-top-img.jpg"
@@ -49,7 +68,7 @@ const status = "Pending";
 
       <div className="flex flex-col lg:flex-row gap-8 w-full">
         <div className="w-full lg:1/2 flex flex-col gap-5">
-        <div className="w-full flex justify-between items-center">
+          <div className="w-full flex justify-between items-center">
             <h2 className="text-xl font-bold"> Vacancy: {volunteer?.volunteersNeeded}</h2>
             <h2 className="text-xl font-bold">Deadline: {volunteer?.deadline}</h2>
           </div>
@@ -66,11 +85,10 @@ const status = "Pending";
             </div>
             <div className="flex flex-col">
               <h2 className="text-3xl font-bold">{volunteer?.name || "Name Not Found"}</h2>
-              <p className="text-xl font-medium">{ volunteer?.email || user?.email || "Email Not Found"}</p>
+              <p className="text-xl font-medium">{volunteer?.email || user?.email || "Email Not Found"}</p>
             </div>
           </div>
           <img src={volunteer?.thumbnail} alt="thumbnail" />
-
         </div>
 
         {/* -------------------------------------------------------------------------------------- */}
@@ -87,7 +105,7 @@ const status = "Pending";
             <input {...register("number", { required: true })} name="number" type="number" placeholder="Your Phone Number" className="input input-bordered input-warning w-full" />
             {errors.number && <span className="text-sm text-red-500 font-medium -mt-4">Please enter your phone number</span>}
 
-            <textarea {...register("message", { required: true })} name="message" placeholder="Discribe Your Self" className="textarea textarea-bordered textarea-warning w-full h-40"></textarea>
+            <textarea {...register("message", { required: true })} name="message" placeholder="Describe Yourself" className="textarea textarea-bordered textarea-warning w-full h-40"></textarea>
             {errors.message && <span className="text-sm text-red-500 font-medium -mt-4">Please enter your message</span>}
 
             <button type="submit" className="btn w-full bg-[#FFA415] text-white text-xl">Apply Now</button>

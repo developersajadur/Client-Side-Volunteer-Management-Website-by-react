@@ -1,8 +1,13 @@
 import { Helmet } from "react-helmet";
+import Swal from "sweetalert2";
 
 const Contact = () => {
     const handleSubmit = e => {
         e.preventDefault();
+        Swal.fire({
+            icon: "Success",
+            title: "Thanks For Contact",
+          });
        
     }
     return (
