@@ -4,16 +4,21 @@ import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import useAxios from "../../Hooks/useAxios";
 import { Helmet } from "react-helmet";
+import { useState } from "react";
 
 const VolunteerDetails = () => {
   const axiosSecure = useAxios();
   const { user } = useAuth();
   const { register, handleSubmit, formState: { errors } } = useForm();
   const volunteer = useLoaderData();
+  // const [currentNeedVolunteers, setCurrentNeedVolunteers] = useState([])
   const postAdminEmail = volunteer?.email;
+  const postTitle = volunteer?.postTitle
+  const currentVacancy = volunteer?.volunteersNeeded
   const status = "Pending";
 
   const { volunteersNeeded } = volunteer;
+
 
   const onSubmit = (data) => {
     if (volunteersNeeded === 0) {
@@ -28,11 +33,11 @@ const VolunteerDetails = () => {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "You Can't Apply For Your Own Post"
+        text: "You Can't Apply Your Own Post"
       });
       return;
     }
-    const dataToSend = { ...data, postAdminEmail, status };
+    const dataToSend = { ...data, postAdminEmail, status,postTitle,currentVacancy };
     axiosSecure.post("/request-job", dataToSend);
     axiosSecure.post("/my-request-job", dataToSend)
       .then(res => {
@@ -45,6 +50,10 @@ const VolunteerDetails = () => {
         }
       });
   };
+  // axiosSecure.get("/test")
+  // .then(res => 
+  //   setCurrentNeedVolunteers(res.data)
+  // )
 
   return (
     <div>

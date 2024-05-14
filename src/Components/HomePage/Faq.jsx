@@ -47,7 +47,7 @@ const Faq = () => {
                 </div>
             </div>
             <div className="lg:w-1/2">
-                <img className="h-96 w-full rounded-2xl" src="faq-1.jpg" alt="" />
+                <img className="h-96 object-cover w-full rounded-2xl" src="faq-1.jpg" alt="" />
             </div>
         </div>
         </div>
