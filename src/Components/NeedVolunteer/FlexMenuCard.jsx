@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init();
 const FlexMenuCard = ({volunteer}) => {
     const {
         thumbnail,
@@ -11,7 +13,7 @@ const FlexMenuCard = ({volunteer}) => {
         _id,
       } = volunteer;
     return (
-        <div className="table w-full h-20 border border-warning">
+        <div data-aos="fade-up" data-aos-duration="2000" className="table w-full h-20 border border-warning">
          <tr>
         <td>
           <div className="flex items-center gap-3">

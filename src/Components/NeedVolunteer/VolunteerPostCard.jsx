@@ -1,5 +1,8 @@
 import { IoLocationSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init();
 
 const VolunteerPostCard = ({ volunteer }) => {
   const {
@@ -12,7 +15,7 @@ const VolunteerPostCard = ({ volunteer }) => {
     _id,
   } = volunteer;
   return (
-    <div>
+    <div data-aos="fade-up" data-aos-duration="2000">
       <div className="card lg:w-96 border border-[#FF5528]">
         <figure className="px-2 pt-2 relative">
           <div className="bg-[#FF5528] px-4 py-1 top-2 right-2 font-semibold rounded-bl-xl  text-white absolute">

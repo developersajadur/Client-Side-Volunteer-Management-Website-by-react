@@ -23,6 +23,7 @@ import { Toaster } from 'react-hot-toast';
 import Profile from './Components/Profile/Profile';
 import JobRequest from './Components/JobRequest/JobRequest';
 import {  QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import BlogDetails from './Components/Blog/BlogDetails';
 const queryClient = new QueryClient()
 
 
@@ -45,7 +46,12 @@ const router = createBrowserRouter([
       },
       { 
         path:"/blogs",
-        element:<Blogs></Blogs>
+        element:<Blogs></Blogs>,
+        loader:() => fetch("/blog.json")
+      },{
+        path:"/blog/:blogId",
+        element:<BlogDetails></BlogDetails>,
+        loader:() => fetch("/blog.json")
       },
       {
         path:"/register",

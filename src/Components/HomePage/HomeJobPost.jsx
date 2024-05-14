@@ -15,10 +15,11 @@ const HomeJobPost = () => {
           })
           .catch(error => console.error("Error fetching volunteer posts:", error));
       }, [page]);
-      
+       
     return (
         <div className="">
             <h1 className="text-2xl lg:text-5xl font-bold text-center">Join As Volunteer</h1>
+            <p className="text-center font-medium text-lg mb-10">Join us as a volunteer and make a difference! Help us serve the community, build <br /> connections, and create positive change together.</p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center mt-10 gap-10">
                 {volunteers?.slice(0, 6).map((volunteer) => (
                     <VolunteerPostCard
