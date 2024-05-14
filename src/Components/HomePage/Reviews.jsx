@@ -60,12 +60,12 @@ const Reviews = () => {
                             <div className="card-body">
                             <div className="avatar">
                             <div className="w-16 rounded-full">
-                              <img src={user?.photoURL || "/user-img.png"}/>
+                              <img src={user?.photoURL || "user-img.png"}/>
                             </div>
                           </div>
                           <p>{testimonial.review}</p>
-                              <h2 className="card-title text-2xl font-bold">{testimonial.client_name}</h2>
-                              <h5 className='text-lg font-semibold'>{testimonial.address}</h5>
+                              <h2 className="card-title text-2xl font-bold">{testimonial.client_name || "Not Found"}</h2>
+                              <h5 className='text-lg font-semibold'>{testimonial.address || "Not Found"}</h5>
                               <div className="rating">
                             <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
                             <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400"  />

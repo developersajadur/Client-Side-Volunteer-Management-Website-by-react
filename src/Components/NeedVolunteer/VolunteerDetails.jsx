@@ -4,7 +4,6 @@ import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import useAxios from "../../Hooks/useAxios";
 import { Helmet } from "react-helmet";
-import { useState } from "react";
 
 const VolunteerDetails = () => {
   const axiosSecure = useAxios();
@@ -14,7 +13,6 @@ const VolunteerDetails = () => {
   // const [currentNeedVolunteers, setCurrentNeedVolunteers] = useState([])
   const postAdminEmail = volunteer?.email;
   const postTitle = volunteer?.postTitle
-  const currentVacancy = volunteer?.volunteersNeeded
   const status = "Pending";
 
   const { volunteersNeeded } = volunteer;
@@ -37,7 +35,7 @@ const VolunteerDetails = () => {
       });
       return;
     }
-    const dataToSend = { ...data, postAdminEmail, status,postTitle,currentVacancy };
+    const dataToSend = { ...data, postAdminEmail, status,postTitle };
     axiosSecure.post("/request-job", dataToSend);
     axiosSecure.post("/my-request-job", dataToSend)
       .then(res => {
@@ -78,13 +76,13 @@ const VolunteerDetails = () => {
       <div className="flex flex-col lg:flex-row gap-8 w-full">
         <div className="w-full lg:1/2 flex flex-col gap-5">
           <div className="w-full flex justify-between items-center">
-            <h2 className="text-xl font-bold"> Vacancy: {volunteer?.volunteersNeeded}</h2>
-            <h2 className="text-xl font-bold">Deadline: {volunteer?.deadline}</h2>
+            <h2 className="text-xl font-bold"> Vacancy: {volunteer?.volunteersNeeded || "Not Found"}</h2>
+            <h2 className="text-xl font-bold">Deadline: {volunteer?.deadline || "Not Found"}</h2>
           </div>
-          <h1 className="text-4xl font-bold ">{volunteer?.postTitle}</h1>
-          <p className="text-xl font-normal"><span className="text-xl font-semibold">Description: </span> {volunteer?.description}</p>
-          <h5 className="text-xl font-semibold">Category: <span className="text-lg font-medium">{volunteer?.category}</span></h5>
-          <h5 className="text-xl font-semibold">Location: <span className="text-lg font-medium">{volunteer?.location}</span></h5>
+          <h1 className="text-4xl font-bold ">{volunteer?.postTitle || "Not Found"}</h1>
+          <p className="text-xl font-normal"><span className="text-xl font-semibold">Description: </span> {volunteer?.description || "Not Found"}</p>
+          <h5 className="text-xl font-semibold">Category: <span className="text-lg font-medium">{volunteer?.category || "Not Found"}</span></h5>
+          <h5 className="text-xl font-semibold">Location: <span className="text-lg font-medium">{volunteer?.location || "Not Found"}</span></h5>
           <h5 className="text-2xl font-bold">Buyer Details:</h5>
           <div className="flex gap-5 items-center">
             <div className="avatar">

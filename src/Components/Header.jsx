@@ -125,7 +125,7 @@ useEffect(() => {
               <div className="border-2 border-[#E7A500] text-black w-28 rounded-full">
                 <img
                   className=""
-                  src={user?.photoURL || "/user-img.png"}
+                  src={user?.photoURL || "user-img.png"}
                   alt="User"
                 />
               </div>

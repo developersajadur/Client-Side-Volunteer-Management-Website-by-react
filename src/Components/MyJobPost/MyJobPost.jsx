@@ -97,14 +97,14 @@ const MyJobPost = () => {
                         {myJobPosts.map((myJobPost, index) => (
                             <tr key={myJobPost._id} className="hover font-bold">
                                 <th>{index + 1}</th>
-                                <th>{myJobPost.postTitle}</th>
-                                <th>{myJobPost.email}</th>
-                                <td>{myJobPost.volunteersNeeded}</td>
-                                <td>{myJobPost.deadline}</td>
+                                <th>{myJobPost.postTitle || "Not Found"}</th>
+                                <th>{myJobPost.email || "Not Found"}</th>
+                                <td>{myJobPost.volunteersNeeded || "Not Found"}</td>
+                                <td>{myJobPost.deadline || "Not Found"}</td>
                                 <td>
                                     <div className="flex gap-5">
-                                        <Link to={`/volunteer-details/${myJobPost._id}`} className="p-4 rounded-xl text-xl text-white bg-[#a4855d]"><FiEye /></Link>
-                                        <NavLink to={`/update-job/${myJobPost._id}`} className="p-4 rounded-xl text-xl text-white bg-[#ffa938]"> <FaPen /></NavLink>
+                                        <Link to={`/volunteer-details/${myJobPost._id}` || "/"} className="p-4 rounded-xl text-xl text-white bg-[#a4855d]"><FiEye /></Link>
+                                        <NavLink to={`/update-job/${myJobPost._id}` || "/"} className="p-4 rounded-xl text-xl text-white bg-[#ffa938]"> <FaPen /></NavLink>
                                         <button onClick={() => handleDelete(myJobPost._id)} className="p-4 rounded-xl text-xl text-white bg-[#82561b]"><MdDelete /></button>
                                     </div>
                                 </td>

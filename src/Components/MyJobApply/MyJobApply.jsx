@@ -52,10 +52,10 @@ const MyJobApply = () => {
                         {myApplyPosts.map((myApplyPost, index) => (
                             <tr key={myApplyPost._id} className="hover font-bold">
                                 <th>{index + 1}</th>
-                                <th>{myApplyPost.name}</th>
-                                <th>{myApplyPost.email}</th>
-                                <td>{myApplyPost.number}</td>
-                                <td>{myApplyPost.status}</td>
+                                <th>{myApplyPost.name || "Not Found"}</th>
+                                <th>{myApplyPost.email || "Not Found"}</th>
+                                <td>{myApplyPost.number || "Not Found"}</td>
+                                <td>{myApplyPost.status || "Not Found"}</td>
                                 <td>
                                     {/* <div className="flex gap-5">
                                         <NavLink to={`/update-job/${myApplyPost._id}`} className="p-4 rounded-xl text-xl text-white bg-[#ffa938]"> <FaCheck /></NavLink>

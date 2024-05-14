@@ -81,10 +81,10 @@ const JobRequest = () => {
                         {jobRequests.map((jobRequest, index) => (
                             <tr key={jobRequest._id} className="hover font-bold">
                                 <th>{index + 1}</th>
-                                <th>{jobRequest.name}</th>
-                                <th>{jobRequest.email}</th>
-                                <td>{jobRequest.number}</td>
-                                <td>{jobRequest.status}</td>
+                                <th>{jobRequest.name || "Not Found"}</th>
+                                <th>{jobRequest.email|| "Not Found"}</th>
+                                <td>{jobRequest.number|| "Not Found"}</td>
+                                <td>{jobRequest.status|| "Not Found"}</td>
                                 <td>
                                     <div className="flex gap-5">
                                         <button onClick={() => handleChangeStatus(jobRequest._id, jobRequest.status, "In Progress")} className="p-4 rounded-xl text-xl text-white bg-[#ffa938]"> <FaCheck /></button>
