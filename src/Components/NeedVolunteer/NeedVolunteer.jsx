@@ -71,10 +71,8 @@ const NeedVolunteer = () => {
   return (
     <div className="w-full flex flex-col justify-center items-center">
       <Helmet>
-               <title>
-              Join As A Volunteer
-               </title>
-            </Helmet>
+        <title>Join As A Volunteer</title>
+      </Helmet>
       
       <div className="carousel-item relative my-10 lg:h-96 rounded-lg w-full flex flex-col justify-center items-center">
         <img
@@ -88,36 +86,40 @@ const NeedVolunteer = () => {
           </h1>
         </div>
       </div>
-   <div className="flex justify-between gap-5">
-   <form onSubmit={handleSearch} className="input input-bordered mb-10 input-warning left-0 flex justify-center mt-10 lg:w-96 items-center gap-2">
+
+      <div className="flex justify-between gap-5">
+        <form onSubmit={handleSearch} className="input input-bordered mb-10 input-warning left-0 flex justify-center mt-10 lg:w-96 items-center gap-2">
           <input name="search" type="text" className="grow" placeholder="Search" />
           <button className="bg-[#E7A500] p-2 rounded-lg font-medium text-white translate-x-3">Search</button>
         </form>
         <div className="flex flex-col lg:flex-row gap-5">
-    <button onClick={handleGrid} className=""><CgMenuGridR className="text-4xl" /></button>
-    <button onClick={handleFlex} className=""><GiHamburgerMenu className="text-4xl" /></button>
+          <button onClick={handleGrid} className="hidden md:block lg:block"><CgMenuGridR className="text-4xl" /></button>
+          <button onClick={handleFlex} className="hidden md:block lg:block"><GiHamburgerMenu className="text-4xl" /></button>
         </div>
-   </div>
-   <div className="gridMenu block">
-      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-10">
-        {volunteers?.map((volunteer) => (
-          <VolunteerPostCard
-            key={volunteer?._id}
-            volunteer={volunteer}
-          />
-        ))}
       </div>
+
+      <div className="gridMenu block">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-10">
+          {volunteers.map((volunteer) => (
+            <VolunteerPostCard
+              key={volunteer?._id}
+              volunteer={volunteer}
+            />
+          ))}
+        </div>
       </div>
+
       <div className="flexMenu hidden">
-      <div className="flex flex-col gap-5 ">
-        {volunteers?.map((volunteer) => (
-          <FlexMenuCard
-            key={volunteer?._id}
-            volunteer={volunteer}
-          />
-        ))}
+        <div className="flex flex-col gap-5 ">
+          {volunteers.map((volunteer) => (
+            <FlexMenuCard
+              key={volunteer?._id}
+              volunteer={volunteer}
+            />
+          ))}
+        </div>
       </div>
-      </div>
+
       <div className="join flex justify-center mt-20">
         <button className="join-item btn bg-[#ffdada]" onClick={handlePreviousPage}>Previous</button>
         {paginationPages.map((page) => (
