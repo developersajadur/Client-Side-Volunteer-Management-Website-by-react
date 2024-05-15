@@ -14,7 +14,7 @@ const Blog = ({blog}) => {
             <Link to={`/blog/${id}` || "/"}>
             <div className="card flex w-full border-[1px] border-warning">
   <figure className="px-10 pt-10">
-    <img src={banner} className="rounded-xl lg:h-52 lg:w-96" />
+    <img src={banner || "faq-1.jpg"} className="rounded-xl lg:h-52 lg:w-96" />
   </figure>
   <div className="card-body">
     <div className="flex gap-2 items-center">

@@ -95,7 +95,7 @@ const VolunteerDetails = () => {
               <p className="text-xl font-medium">{volunteer?.email || user?.email || "Email Not Found"}</p>
             </div>
           </div>
-          <img src={volunteer?.thumbnail} alt="thumbnail" />
+          <img src={volunteer?.thumbnail || "faq-1.jpg"} alt="thumbnail" />
         </div>
 
         {/* -------------------------------------------------------------------------------------- */}

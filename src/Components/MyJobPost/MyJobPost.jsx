@@ -3,7 +3,7 @@ import { FaPen } from "react-icons/fa6";
 import { MdDelete } from "react-icons/md";
 import { FiEye } from "react-icons/fi";
 import Swal from "sweetalert2";
-import {  useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import useAuth from "../../Hooks/useAuth";
 import useAxios from "../../Hooks/useAxios";
 import { Helmet } from "react-helmet";
@@ -65,10 +65,9 @@ const MyJobPost = () => {
     return (
         <div>
             <Helmet>
-               <title>
-              My Post
-               </title>
+                <title>My Post</title>
             </Helmet>
+
             <div className="carousel-item relative my-10 lg:h-96 rounded-lg w-full flex flex-col justify-center items-center">
                 <img
                     src="page-top-img.jpg"
@@ -81,38 +80,42 @@ const MyJobPost = () => {
                     </h1>
                 </div>
             </div>
-            <div className="overflow-x-auto">
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Post Title</th>
-                            <th>Email</th>
-                            <th>Volunteers Needed</th>
-                            <th>Deadline</th>
-                            <th>Show, Edit, Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {myJobPosts.map((myJobPost, index) => (
-                            <tr key={myJobPost._id} className="hover font-bold">
-                                <th>{index + 1}</th>
-                                <th>{myJobPost.postTitle || "Not Found"}</th>
-                                <th>{myJobPost.email || "Not Found"}</th>
-                                <td>{myJobPost.volunteersNeeded || "Not Found"}</td>
-                                <td>{myJobPost.deadline || "Not Found"}</td>
-                                <td>
-                                    <div className="flex gap-5">
-                                        <Link to={`/volunteer-details/${myJobPost._id}` || "/"} className="p-4 rounded-xl text-xl text-white bg-[#a4855d]"><FiEye /></Link>
-                                        <NavLink to={`/update-job/${myJobPost._id}` || "/"} className="p-4 rounded-xl text-xl text-white bg-[#ffa938]"> <FaPen /></NavLink>
-                                        <button onClick={() => handleDelete(myJobPost._id)} className="p-4 rounded-xl text-xl text-white bg-[#82561b]"><MdDelete /></button>
-                                    </div>
-                                </td>
+            {myJobPosts.length > 0 ? (
+                <div className="overflow-x-auto">
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Post Title</th>
+                                <th>Email</th>
+                                <th>Volunteers Needed</th>
+                                <th>Deadline</th>
+                                <th>Show, Edit, Delete</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+                        </thead>
+                        <tbody>
+                            {myJobPosts.map((myJobPost, index) => (
+                                <tr key={myJobPost._id} className="hover font-bold">
+                                    <th>{index + 1}</th>
+                                    <th>{myJobPost.postTitle || "Not Found"}</th>
+                                    <th>{myJobPost.email || "Not Found"}</th>
+                                    <td>{myJobPost.volunteersNeeded || "Not Found"}</td>
+                                    <td>{myJobPost.deadline || "Not Found"}</td>
+                                    <td>
+                                        <div className="flex gap-5">
+                                            <Link to={`/volunteer-details/${myJobPost._id}` || "/"} className="p-4 rounded-xl text-xl text-white bg-[#a4855d]"><FiEye /></Link>
+                                            <NavLink to={`/update-job/${myJobPost._id}` || "/"} className="p-4 rounded-xl text-xl text-white bg-[#ffa938]"> <FaPen /></NavLink>
+                                            <button onClick={() => handleDelete(myJobPost._id)} className="p-4 rounded-xl text-xl text-white bg-[#82561b]"><MdDelete /></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            ) : (
+                <div className="text-2xl lg:text-6xl font-bold text-center">No job posts found.</div>
+            )}
         </div>
     );
 };

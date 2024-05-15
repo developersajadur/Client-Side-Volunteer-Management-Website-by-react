@@ -33,7 +33,7 @@ const Banner = () => {
           className="mySwiper  sm:mt-5"
         >
             {/* ------------------ banner 1 ------------------- */}
-            <SwiperSlide className="carousel w-full">
+            <SwiperSlide className="carousel h-full w-full">
   <div className="carousel-item relative  w-full flex flex-col justify-center items-center">
     <img
       src="banner-1.jpg"
@@ -48,7 +48,7 @@ const Banner = () => {
   </div>
 </SwiperSlide>
             {/* ------------------ banner 2 ------------------- */}
-            <SwiperSlide className="carousel w-full">
+            <SwiperSlide className="carousel h-full w-full">
   <div className="carousel-item relative  w-full flex flex-col justify-center items-center">
     <img
       src="banner-2.jpg"
@@ -63,7 +63,7 @@ const Banner = () => {
   </div>
 </SwiperSlide>
             {/* ------------------ banner 3 ------------------- */}
-            <SwiperSlide className="carousel w-full">
+            <SwiperSlide className="carousel h-full w-full">
   <div className="carousel-item relative  w-full flex flex-col justify-center items-center">
     <img
       src="banner-3.jpg"

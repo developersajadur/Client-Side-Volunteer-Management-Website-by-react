@@ -21,7 +21,7 @@ const VolunteerPostCard = ({ volunteer }) => {
           <div className="bg-[#FF5528] px-4 py-1 top-2 right-2 font-semibold rounded-bl-xl  text-white absolute">
             Vacancy {volunteersNeeded || "Not Found"}
           </div>
-          <img src={thumbnail || "Not Found"} className="rounded-xl" />
+          <img src={thumbnail || "faq-1.jpg"} className="rounded-xl" />
         </figure>
         <div className="card-body items-start text-start px-4 py-3">
           <h2 className="card-title font-bold">{postTitle || "Not Found"}</h2>

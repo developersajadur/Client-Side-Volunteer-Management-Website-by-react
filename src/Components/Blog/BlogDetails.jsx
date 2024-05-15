@@ -28,7 +28,7 @@ const BlogDetails = () => {
                 </div>
             </div>
             <div className="card w-full p-0">
-  <figure><img className="h-full lg:h-96 w-full lg:w-[100%]" src={banner} alt="Shoes" /></figure>
+  <figure><img className="h-full lg:h-96 w-full lg:w-[100%]" src={banner || "faq-1.jpg"} alt="Shoes" /></figure>
   <div className="card-body">
     <h2 className="card-title text-4xl lg:text-6xl font-bold">{short_title}</h2>
     <h3 className="text-xl lg:text-3xl font-bold">{description}</h3>
